@@ -76,6 +76,12 @@ jobs: #Job to execute on event
       uses: actions/download-artifact@v2 # download the file
       with:
         name: assetDocuments
+    
+    - name: Telegram success notifications
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
         
     - if: ${{ failure() }}
       name: Create Issues Notifications
@@ -87,11 +93,7 @@ jobs: #Job to execute on event
         labels: workflow-failed
         body: Workflow failed for commit ${{github.sha}}
       
-    - name: Telegram failure notifications
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
+
     
         
         

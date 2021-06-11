@@ -52,7 +52,7 @@ jobs: #Job to execute on event
         ls # verify that the report is indeed created
         
     - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.5 # Checkout Unit Test Reporting
+      uses: EnricoMi/publish-unit-test-result-action@v1 # Checkout Unit Test Reporting
       if: always()  # always do it
       with:
         files: report.xml # make use the file we created
